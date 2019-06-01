@@ -68,16 +68,6 @@ class InvertedIndex:
         del content
         del parsed_content
         file.close()
-    def test(self):
-        count =0 
-        for file_id in self.file_url_map.keys():
-            self.tokenize_file(file_id)
-            count +=1
-            if count == 100:
-                break
-        for word, posting_list in self.InvertedIndex_collection.items():
-            for file_id, info in posting_list.items():
-                info[2] = (1+math.log10(info[0]))*math.log10(self.number_of_file/len(posting_list))
     def process_all_file(self):
         for file_id in self.file_url_map.keys():
             self.tokenize_file(file_id)
